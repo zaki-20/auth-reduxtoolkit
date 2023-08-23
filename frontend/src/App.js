@@ -1,11 +1,22 @@
-import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Dashboad from './pages/Dashboad'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
   return (
-    <div className="App">
-      hello
-    </div>
-  );
+    <>
+      <Router>
+        <div className=''>
+          <Routes>
+            <Route path='/' element={<Dashboad />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
+        </div>
+      </Router>
+    </>
+  )
 }
 
-export default App;
+export default App
