@@ -31,7 +31,7 @@ const registerUser = asyncHandler(async (req, res) => {
         name,
         email,
         password: hashedPassword,
-        token:generateToken(user._id)
+
     })
 
     if (user) {
@@ -39,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
+            token: generateToken(user._id)
         })
     } else {
         res.status(400)
@@ -61,7 +62,7 @@ const loginUser = asyncHandler(async (req, res) => {
             _id: user.id,
             name: user.name,
             email: user.email,
-            token:generateToken(user._id)
+            token: generateToken(user._id)
         })
     } else {
         res.status(400)
@@ -77,7 +78,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
     res.status(200).json(req.user)
-  })
+})
 
 
 // Generate JWT
